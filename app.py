@@ -398,9 +398,10 @@ SAMPLE_TWEETS = [
 ]
 
 # ─── Session State ───────────────────────────────────────────────────────────
-for key, default in [("history", []), ("tweet_input", "")]:
-    if key not in st.session_state:
-        st.session_state[key] = default
+if "history" not in st.session_state:
+    st.session_state.history = []
+if "tweet_area" not in st.session_state:
+    st.session_state.tweet_area = ""
 
 
 # ─── Model — auto-load on startup ────────────────────────────────────────────
@@ -472,7 +473,7 @@ with st.sidebar:
     for tw in SAMPLE_TWEETS[:6]:
         preview = tw[:42] + ("…" if len(tw) > 42 else "")
         if st.button(preview, key=f"s_{tw[:15]}"):
-            st.session_state.tweet_input = tw
+            st.session_state.tweet_area = tw
             st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -516,7 +517,6 @@ with col_left:
         label="tweet",
         label_visibility="collapsed",
         placeholder="Type or paste a tweet here…",
-        value=st.session_state.tweet_input,
         height=120,
         key="tweet_area"
     )
@@ -530,7 +530,7 @@ with col_left:
         analyse_btn = st.button("Analyse Sentiment", key="analyse")
     with c3:
         if st.button("Random Sample", key="random"):
-            st.session_state.tweet_input = random.choice(SAMPLE_TWEETS)
+            st.session_state.tweet_area = random.choice(SAMPLE_TWEETS)
             st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
