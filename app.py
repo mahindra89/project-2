@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 
-# ── Light UI Styling ──────────────────────────────────────────────────────────
+# ── Navy Blue UI Styling ──────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -29,15 +29,18 @@ st.markdown("""
 
 html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
-    background: #f8fafc;
-    color: #0f172a;
+    background: #061a33;
+    color: #f8fafc;
 }
 
 .stApp {
-    background: linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.14), transparent 32%),
+        linear-gradient(180deg, #071f3d 0%, #061a33 48%, #041326 100%);
 }
 
-/* Do NOT hide Streamlit header completely.
+/* Do not hide Streamlit header completely.
    The sidebar reopen button lives there after sidebar collapse. */
 #MainMenu, footer {
     visibility: hidden;
@@ -45,19 +48,18 @@ html, body, [class*="css"] {
 
 header {
     visibility: visible !important;
-    background: rgba(248, 250, 252, 0.92) !important;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e2e8f0;
+    background: rgba(6, 26, 51, 0.88) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
 }
 
 /* Sidebar reopen control */
 [data-testid="collapsedControl"] {
     visibility: visible !important;
     display: flex !important;
-    color: #0f172a !important;
+    color: #f8fafc !important;
 }
 
-/* Main page container */
 .block-container {
     padding: 2.5rem 2.5rem 3rem;
     max-width: 1200px;
@@ -65,21 +67,26 @@ header {
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
+    background: #082345;
+    border-right: 1px solid rgba(148, 163, 184, 0.22);
 }
 
 [data-testid="stSidebar"] .block-container {
     padding: 1.8rem 1.1rem;
 }
 
+/* General text */
+p, span, label {
+    color: inherit;
+}
+
 /* Buttons */
 .stButton > button {
     width: 100%;
-    background: #ffffff;
-    color: #334155;
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1px solid rgba(203, 213, 225, 0.22);
+    border-radius: 10px;
     padding: 0.55rem 0.85rem;
     font-family: 'Inter', sans-serif;
     font-size: 0.78rem;
@@ -91,16 +98,16 @@ header {
 }
 
 .stButton > button:hover {
-    background: #eff6ff;
-    border-color: #93c5fd;
-    color: #1d4ed8;
+    background: rgba(96, 165, 250, 0.20);
+    border-color: #60a5fa;
+    color: #ffffff;
 }
 
 /* Analyse button */
 div[data-testid="column"]:nth-child(2) .stButton > button {
-    background: #2563eb;
+    background: #3b82f6;
     color: #ffffff;
-    border-color: #2563eb;
+    border-color: #3b82f6;
     font-weight: 700;
     font-size: 0.85rem;
     text-align: center;
@@ -108,16 +115,16 @@ div[data-testid="column"]:nth-child(2) .stButton > button {
 }
 
 div[data-testid="column"]:nth-child(2) .stButton > button:hover {
-    background: #1d4ed8;
-    border-color: #1d4ed8;
+    background: #2563eb;
+    border-color: #2563eb;
     color: #ffffff;
 }
 
 /* Textarea */
 textarea {
-    background: #ffffff !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    border: 1px solid rgba(191, 219, 254, 0.9) !important;
+    border-radius: 14px !important;
     color: #0f172a !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 0.92rem !important;
@@ -127,22 +134,21 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #2563eb !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.22) !important;
     outline: none !important;
 }
 
 /* Result banner */
 .result-banner {
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 1.2rem 1.4rem;
     border: 1px solid;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 1rem 0 0.8rem;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 16px 34px rgba(2, 6, 23, 0.22);
 }
 
 .result-label {
@@ -154,7 +160,7 @@ textarea:focus {
 .result-conf {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: #64748b;
+    color: #cbd5e1;
     margin-top: 0.2rem;
 }
 
@@ -173,11 +179,10 @@ textarea:focus {
 }
 
 .score-item {
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 0.85rem 0.95rem;
     border: 1px solid;
-    background: #ffffff;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 12px 26px rgba(2, 6, 23, 0.18);
 }
 
 .score-name {
@@ -185,7 +190,7 @@ textarea:focus {
     font-size: 0.62rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #64748b;
+    color: #cbd5e1;
     margin-bottom: 0.35rem;
 }
 
@@ -199,7 +204,7 @@ textarea:focus {
 .bar-track {
     margin-top: 0.5rem;
     height: 4px;
-    background: #e2e8f0;
+    background: rgba(226, 232, 240, 0.22);
     border-radius: 999px;
     overflow: hidden;
 }
@@ -210,23 +215,23 @@ textarea:focus {
 }
 
 .sc-pos {
-    background: rgba(16,185,129,0.08);
-    border-color: rgba(16,185,129,0.20);
+    background: rgba(16,185,129,0.13);
+    border-color: rgba(16,185,129,0.30);
 }
 
 .sc-neg {
-    background: rgba(239,68,68,0.08);
-    border-color: rgba(239,68,68,0.20);
+    background: rgba(239,68,68,0.13);
+    border-color: rgba(239,68,68,0.30);
 }
 
 .sc-neu {
-    background: rgba(245,158,11,0.10);
-    border-color: rgba(245,158,11,0.22);
+    background: rgba(245,158,11,0.15);
+    border-color: rgba(245,158,11,0.32);
 }
 
 .sc-irr {
-    background: rgba(100,116,139,0.09);
-    border-color: rgba(100,116,139,0.22);
+    background: rgba(148,163,184,0.14);
+    border-color: rgba(148,163,184,0.30);
 }
 
 /* History */
@@ -235,13 +240,13 @@ textarea:focus {
     justify-content: space-between;
     align-items: center;
     padding: 0.65rem 0;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.16);
     gap: 1rem;
 }
 
 .hist-text {
     font-size: 0.78rem;
-    color: #475569;
+    color: #cbd5e1;
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
@@ -257,37 +262,37 @@ textarea:focus {
 }
 
 .hc-pos {
-    background: rgba(16,185,129,0.14);
-    color: #047857;
+    background: rgba(16,185,129,0.18);
+    color: #6ee7b7;
 }
 
 .hc-neg {
-    background: rgba(239,68,68,0.14);
-    color: #b91c1c;
+    background: rgba(239,68,68,0.18);
+    color: #fca5a5;
 }
 
 .hc-neu {
-    background: rgba(245,158,11,0.18);
-    color: #92400e;
+    background: rgba(245,158,11,0.20);
+    color: #fcd34d;
 }
 
 .hc-irr {
-    background: rgba(100,116,139,0.16);
-    color: #475569;
+    background: rgba(148,163,184,0.18);
+    color: #cbd5e1;
 }
 
 .mono-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.62rem;
     font-weight: 600;
-    color: #64748b;
+    color: #93c5fd;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 0.6rem;
 }
 
 hr {
-    border-color: #e2e8f0 !important;
+    border-color: rgba(226, 232, 240, 0.18) !important;
     margin: 1.5rem 0 1rem !important;
 }
 
@@ -343,36 +348,36 @@ LABELS = ["Irrelevant", "Negative", "Neutral", "Positive"]
 
 META = {
     "Positive": {
-        "color": "#10b981",
-        "bar": "linear-gradient(90deg,#10b981,#34d399)",
+        "color": "#34d399",
+        "bar": "linear-gradient(90deg,#10b981,#6ee7b7)",
         "css": "sc-pos",
         "chip": "hc-pos",
-        "border": "rgba(16,185,129,0.22)",
-        "bg": "rgba(16,185,129,0.08)"
+        "border": "rgba(16,185,129,0.34)",
+        "bg": "rgba(16,185,129,0.13)"
     },
     "Negative": {
-        "color": "#ef4444",
-        "bar": "linear-gradient(90deg,#ef4444,#f87171)",
+        "color": "#f87171",
+        "bar": "linear-gradient(90deg,#ef4444,#fca5a5)",
         "css": "sc-neg",
         "chip": "hc-neg",
-        "border": "rgba(239,68,68,0.22)",
-        "bg": "rgba(239,68,68,0.08)"
+        "border": "rgba(239,68,68,0.34)",
+        "bg": "rgba(239,68,68,0.13)"
     },
     "Neutral": {
-        "color": "#f59e0b",
-        "bar": "linear-gradient(90deg,#f59e0b,#fbbf24)",
+        "color": "#fbbf24",
+        "bar": "linear-gradient(90deg,#f59e0b,#fcd34d)",
         "css": "sc-neu",
         "chip": "hc-neu",
-        "border": "rgba(245,158,11,0.24)",
-        "bg": "rgba(245,158,11,0.10)"
+        "border": "rgba(245,158,11,0.36)",
+        "bg": "rgba(245,158,11,0.15)"
     },
     "Irrelevant": {
-        "color": "#475569",
-        "bar": "linear-gradient(90deg,#64748b,#94a3b8)",
+        "color": "#cbd5e1",
+        "bar": "linear-gradient(90deg,#94a3b8,#cbd5e1)",
         "css": "sc-irr",
         "chip": "hc-irr",
-        "border": "rgba(100,116,139,0.24)",
-        "bg": "rgba(100,116,139,0.10)"
+        "border": "rgba(148,163,184,0.36)",
+        "bg": "rgba(148,163,184,0.14)"
     },
 }
 
@@ -478,19 +483,19 @@ def predict(text):
 with st.sidebar:
     st.markdown("""
     <div style='margin-bottom:1.4rem;'>
-      <div style='font-size:0.95rem;font-weight:700;color:#0f172a;letter-spacing:-0.01em;'>
+      <div style='font-size:0.95rem;font-weight:700;color:#f8fafc;letter-spacing:-0.01em;'>
         SentimentAI
       </div>
-      <div style='font-family:JetBrains Mono,monospace;font-size:0.58rem;color:#64748b;
+      <div style='font-family:JetBrains Mono,monospace;font-size:0.58rem;color:#93c5fd;
                   letter-spacing:0.1em;margin-top:0.2rem;'>
         BERT + BiLSTM
       </div>
     </div>
     """, unsafe_allow_html=True)
 
-    dot = "#10b981" if model_ok else "#ef4444"
+    dot = "#34d399" if model_ok else "#f87171"
     msg = "Ready" if model_ok else "Failed"
-    col = "#047857" if model_ok else "#b91c1c"
+    col = "#6ee7b7" if model_ok else "#fca5a5"
 
     st.markdown(f"""
     <div style='display:flex;align-items:center;gap:0.45rem;margin-bottom:1.8rem;'>
@@ -516,10 +521,10 @@ with st.sidebar:
 # ── Page Header ───────────────────────────────────────────────────────────────
 st.markdown("""
 <div style='margin-bottom:1.8rem;'>
-  <div style='font-size:1.35rem;font-weight:700;color:#0f172a;letter-spacing:-0.02em;'>
+  <div style='font-size:1.45rem;font-weight:700;color:#f8fafc;letter-spacing:-0.02em;'>
     Twitter Sentiment Analysis
   </div>
-  <div style='font-size:0.72rem;color:#64748b;margin-top:0.3rem;
+  <div style='font-size:0.72rem;color:#93c5fd;margin-top:0.35rem;
               font-family:JetBrains Mono,monospace;letter-spacing:0.06em;'>
     BERT-base-uncased · BiLSTM · 4-class · 88.4% accuracy
   </div>
@@ -545,7 +550,7 @@ with col_l:
     c1, c2, c3 = st.columns([1, 1.8, 1])
 
     with c1:
-        clr = "#ef4444" if n > 280 else "#64748b"
+        clr = "#f87171" if n > 280 else "#cbd5e1"
         st.markdown(
             f"""
             <div style="font-family:JetBrains Mono,monospace;
@@ -633,13 +638,13 @@ with col_r:
                 y=vals,
                 marker=dict(
                     color=[META[k]["color"] for k in cats],
-                    opacity=0.75,
+                    opacity=0.85,
                     line=dict(width=0)
                 ),
                 text=[f"{v:.1f}%" for v in vals],
                 textposition="outside",
                 textfont=dict(
-                    color="#334155",
+                    color="#e2e8f0",
                     size=10,
                     family="JetBrains Mono"
                 ),
@@ -657,12 +662,12 @@ with col_r:
             ),
             xaxis=dict(
                 tickfont=dict(
-                    color="#334155",
+                    color="#e2e8f0",
                     size=10,
                     family="Inter"
                 ),
-                gridcolor="#e2e8f0",
-                linecolor="#e2e8f0"
+                gridcolor="rgba(226,232,240,0.18)",
+                linecolor="rgba(226,232,240,0.18)"
             ),
         )
 
@@ -686,7 +691,7 @@ with col_r:
                         align-items:center;
                         gap:0.7rem;
                         padding:0.65rem 0;
-                        border-bottom:1px solid #e2e8f0;'>
+                        border-bottom:1px solid rgba(226,232,240,0.16);'>
               <div style='width:7px;
                           height:7px;
                           border-radius:50%;
@@ -700,7 +705,7 @@ with col_r:
                           flex-shrink:0;'>
                 {lbl}
               </div>
-              <div style='font-size:0.75rem;color:#475569;'>
+              <div style='font-size:0.75rem;color:#cbd5e1;'>
                 {desc}
               </div>
             </div>
